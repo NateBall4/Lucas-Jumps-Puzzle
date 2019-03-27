@@ -43,7 +43,21 @@ int Puzzle::move(int move, char* board) {
 
 bool Puzzle::isBoardSolved(char* board) {
 	int counter = 0;
-
+	for (int i = 0; i < 7; i++) {
+	
+			if (board[i] == 'R' && i < 3) {
+				counter++;
+			}
+			else if (board[i] == 'X' && i == 3) {
+				counter++;
+			}
+			else if (board[i] == 'B' && i < 7 && i > 3) {
+				counter++;
+			}
+			else {
+				counter = 0;
+			}
+	}
 	if (counter == 7) {
 		return true;
 	}
@@ -53,7 +67,30 @@ bool Puzzle::isBoardSolved(char* board) {
 }
 
 bool Puzzle::isBoardGimped(char* board) {
+	int x = 0;
+	
+	for (int i = 0; i < 7; i++) {
+		if (board[i] != 'X') {
+			x++;
+		}
+		else {
+			break;
+		}
+	}
 
+	if (board[x - 1] == 'B') {
+		return false;
+	}
+	else if (board[x - 2] == 'B') {
+		return false;
+	}
+	else if (board[x + 1] == 'R') {
+		return false;
+	}
+	else if (board[x + 2] == 'R') {
+		return false;
+	}
+	
 
-	return false;
+	return true;
 }
