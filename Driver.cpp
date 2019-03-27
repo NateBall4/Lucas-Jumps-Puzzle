@@ -17,8 +17,16 @@ int main() {
 
 		lucasJumps.move(move, board);
 		lucasJumps.printBoard(board);
+		if (lucasJumps.isBoardGimped(board) == true && lucasJumps.isBoardSolved(board) == false) {
+			cout << "congrats you gimped it!" << endl;
+			break;
+		}
+		else if (lucasJumps.isBoardSolved(board) == true) {
+			cout << "congrats you solved it!" << endl;
+		}
 		}
 
+		cout << "Game Over!" << endl;
 	_getch();
 	return 0;
 }
